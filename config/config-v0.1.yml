@@ -1,0 +1,15 @@
+#
+# Snakemake RNA Secondary Structure Prediction Pipeline Config
+# 
+# v0.1 (Nov 9, 2020)
+# ----
+#
+# - initial version
+#
+version: "0.1"
+
+# reference genome / annotations
+reference:
+  fasta: "/data/ref/gencode/human/v35/genome/fasta/GRCh38.primary_assembly.genome.fa"
+  gff: "/data/ref/gencode/human/v35/genome/gff3/gencode.v35.annotation.gff3"
+

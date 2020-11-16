@@ -1,0 +1,5 @@
+python>=3.8
+viennarna>=2.4.15
+snakemake-minimal
+genometools-genometools
+bedtools
