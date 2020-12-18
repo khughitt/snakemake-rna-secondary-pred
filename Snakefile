@@ -7,7 +7,9 @@ KH (Nov 2020)
 tidy_gff = config['reference']['gff'].replace('.gff3', '.tidy.gff3')
 intron_gff = tidy_gff.replace('.gff3', '.incl.introns.gff3')
 combined_fasta = config['reference']['fasta'].replace('.fa', '.features.fa')
-rnafold_outputs = combined_fasta.replace(".features.fa", ".{feature}.rnafold.out")
+
+out_dir = os.path.join(config['out_dir'], config['version'])
+rnafold_outputs = os.path.join(out_dir, os.path.basename(combined_fasta).replace(".features.fa", ".{feature}.rnafold.out"))
 
 # feature types and corresponding outputs
 feature_types = ['five_prime_UTR', 'three_prime_UTR', 'exon', 'intron']
@@ -26,7 +28,15 @@ rule run_rnafold:
         feature_fastas
     output:
         rnafold_outputs
-    shell: "RNAfold -i {input} -g --noPS > {output}"
+    shell:
+        """
+        ps_dir="`dirname {output}`/ps/{wildcards.feature}"
+
+        mkdir -p $ps_dir
+        cd $ps_dir
+
+        RNAfold --verbose -i {input} -g > {output}
+        """
 
 # split combined fasta file into feature-specific sub-files
 # https://www.biostars.org/p/392018/#392021
