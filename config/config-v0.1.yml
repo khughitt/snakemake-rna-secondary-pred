@@ -15,4 +15,14 @@ reference:
   fasta: "/data/ref/gencode/human/v35/genome/fasta/GRCh38.primary_assembly.genome.fa"
   gff: "/data/ref/gencode/human/v35/genome/gff3/gencode.v35.annotation.gff3"
 
+# mm25 data path
+mm25: "/data/packages/0.2.2/mocklab/mm25/mm25-gene-scores-all/3.2/mm25-gene-scores-all.tsv"
+
+# number of top mm25 genes to analyze
+num_genes: 100
+
+# minimum and maximum length of sequences to consider
+filtering:
+  min_len: 10
+  max_len: 10000
 
