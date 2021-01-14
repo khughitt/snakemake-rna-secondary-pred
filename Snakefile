@@ -42,7 +42,7 @@ rule run_rnafold:
         mkdir -p $ps_dir
         cd $ps_dir
 
-        RNAfold --verbose -t 4 -i {input} -g > {output}
+        RNAfold --verbose -p -t 4 -i {input} -g > {output}
         """
 
 # filter multifasta files to remove sequences longer than the specified amount
